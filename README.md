@@ -19,6 +19,9 @@ server {
 
     root /web/html/nginx-2420;
     index index.html;
+    location / {
+        index index.html
+    }
 }
 ```
 This code sets up a block that listens on port 80 and uses files from the /web/html/nginx-2420
