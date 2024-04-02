@@ -1,0 +1,26 @@
+#cloud-config
+users:
+  - name: marku
+    primary_group: marku
+    groups: wheel
+    shell: /bin/bash
+    sudo: ['ALL=(ALL) NOPASSWD:ALL']
+    ssh-authorized-keys:
+      - ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGKtMi2f0imiqiL+MwQ4RclYxteeGxC4GQefip00s+0L mmatsumoto5@my.bcit.ca
+
+packages:
+  - ripgrep
+  - rsync
+  - vim
+  - fd
+  - less
+  - man-db
+  - bash-completion
+  - tmux
+
+runcmd:
+  - echo 'PermitRootLogin no' > /etc/ssh/sshd_config.d/01-permitrootlogin.conf
+  - systemctl restart sshd
+
+
+  
