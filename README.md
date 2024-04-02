@@ -64,4 +64,24 @@ copy and paste this code in there
 </body>
 </html>
 ```
+Go back to the nginx directory, then go to sites-available directory
+```cd /etc/nginx/sites-available```
+Then create another conf file and paste the same code again
+```sudo vim nginx-2420.conf```
+```
+server {
+    listen 80;
+    server_name localhost;
+
+    root /web/html/nginx-2420;
+    index index.html;
+    location / {
+        index index.html
+    }
+}
+```
+Then create a symbolic link between sites available and sites enabled
+```sudo ln -s /etc/nginx/sites-available/example.com /etc/nginx/sites-enabled/```
+then restart nginx
+```sudo systemctl restart nginx```
     
